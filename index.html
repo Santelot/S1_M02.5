@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook - Misión</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .note {
+            background-color: #ffeb3b;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .nav-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-buttons button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+            }
+        }
+
+        function navigateTo(id) {
+            var element = document.getElementById(id);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</head>
+<body onload="updateActivities()">
+
+<div class="header">
+    <h1>Playbook - S1 - M02.5</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual_gnius_club')">
+        <div class="title">
+            <span>🎉 Actividad 1: Saludo y Ritual Gnius Club (4 pasos)</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Bienvenida y preparación para la misión</div>
+    </div>
+    <div id="saludo_ritual_gnius_club" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 1 "Gnius Club"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¡Hola, Genios! Es bueno verlos de nuevo. ¿Listos para seguir desarrollando su creatividad?</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 2 "¿Cómo están?"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Antes de comenzar, quiero saber cómo se sienten hoy. Vamos a medir el ánimo con nuestro dab nuevamente. Si se sienten inspirados para seguir diseñando, hagan un dab. Si sienten que necesitan un poco más de inspiración, reclínense hacia atrás de manera que su cabeza quede viendo al techo y respiren profundo. ¡Quiero ver cómo se sienten el día de hoy!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 3 "Gracias por Asistir"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Como es tradición, tomemos un momento para agradecer estar aquí. Juntemos las manos y digamos "Gracias".</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar Diapositiva 4 "Objetivos de la Misión"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">La misión de hoy busca seguir explorando con ustedes el concepto de "Diseño". Tenemos dos objetivos clave: <br> 1. Explorar otras aplicaciones de diseño dentro de la industria. <br> 2. Diseñar un objeto para que sea aerodinámico.</div>
+        </div>
+    </div>
+</div>
+
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">
+            <span>🔄 Actividad 2: State Change (4 pasos)</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Activación de la creatividad con un reto de dibujo</div>
+    </div>
+    <div id="state_change" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 5 "State Change"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Antes de empezar con la actividad de hoy, vamos a activar nuestra creatividad con un pequeño reto de dibujo nuevamente. Esta vez, quiero que hagan un dibujo rápido de un coche de Fórmula 1. No se preocupen por el dibujo o sus conocimientos en diseño automotriz, simplemente dejen que fluya la creatividad.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 6 "Doodle Time"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¿Recuerdan para qué nos sirve dibujar? (escuchar respuestas) ¡Exacto, nos ayuda a calentar motores antes de una actividad que requiera de creatividad, y hoy vamos a necesitar mucho motor. Por favor saquen alguna libreta y busquen un espacio donde puedan realizar un dibujo. Tienen 1 minuto para hacer este dibujo de un auto de Fórmula 1, recuerden no se preocupen por los detalles, solo dejen que la creatividad fluya.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 7 "Tiempo de Doodle"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">El tiempo comienza ahora. ¡Adelante!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 8 "Conclusión del Doodle"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¡Tiempo! Espero que su creatividad haya acelerado porque necesitaremos justo eso para nuestro reto del día de hoy.</div>
+        </div>
+    </div>
+</div>
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">
+            <span>👥 Actividad 3: Team Gnius (4 pasos)</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Formación de equipos y preparación para la misión</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 9 "Team Gnius"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Vamos a volver a trabajar con el equipo de 3 personas que hemos estado llevando.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 10 "Formando Equipos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Tienen 1 minuto para formar sus equipos. Encuentren a sus dos compañeros con los que han estado colaborando.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 11 "Preparación"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora elijan un representante de cada equipo para que venga por sus Magic Tablets que es en donde van a trabajar sus bocetos.</div>
+        </div>
+    </div>
+</div>
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge_intro')">
+        <div class="title">
+            <span>🚗 Actividad 4: Introducción al Challenge (12 pasos)</span>
+            <span>⏰ Tiempo: 30 minutos</span>
+        </div>
+        <div class="subtitle">Introducción al diseño aerodinámico y simulación</div>
+    </div>
+    <div id="challenge_intro" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (2 minutos): Proyectar Diapositiva 12 "Bienvenidos a la Escudería Gnius Club Racing"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Genios, cuando hablamos de diseño, muchos piensan en colores, logotipos o cosas bonitas. Pero el diseño va mucho más allá de eso. Piensen en un diseñador como alguien que resuelve problemas. Los diseñadores no solo hacen cosas que se ven bien; crean formas que cumplen funciones específicas. ¿Han visto esos coches de Fórmula 1? Cada curva, cada ángulo, está pensado para cortar el aire y hacer que el coche vaya lo más rápido posible. Ustedes, hoy, van a ser diseñadores mecánicos y trabajarán como parte del equipo de Gnius Club Racing para crear el perfil perfecto de un coche de carreras. ¡Están diseñando algo que tiene que funcionar a la perfección, no solo verse bien!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (2 minutos): Proyectar Diapositiva 13 "¿Qué es la aerodinámica?"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¿Alguna vez han asomado su mano por la ventana del coche mientras va rápido? Si han sentido como el aire les empuja la mano hacia atrás, han experimentado algo que llamamos resistencia del viento, en términos simples, mientras más rápido nos movemos, el aire tiene menos tiempo para quitarse de nuestro camino y termina frenándonos. Ser aerodinámico significa que un objeto, como un coche, se mueve a través del aire sin mucha resistencia. Es como cortar el aire de una forma suave, sin que el viento lo frene. Por eso, los aviones y coches de carreras tienen formas tan peculiares, todo está diseñado para que el aire fluya alrededor de ellos.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (2 minutos): Proyectar Diapositiva 14 "Importancia en Coches de Carrera"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Un coche de carrera necesita moverse rápido sin que el aire lo frene. Imagina que el aire es como agua: si tratas de mover la mano muy rápido, te va a costar trabajo, mientras que si lo haces lento, el agua fluye sin detenerte. Los coches tienen que ser diseñados para que esa "agua" se mueva suave alrededor de ellos. Eso es lo que haremos hoy: diseñar un perfil que corte el aire para ir más rápido.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (2 minutos): Proyectar Diapositiva 15 "Simulador de Fluidos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Hoy vamos a usar un simulador que nos muestra cómo se mueve el aire alrededor de los diseños. Básicamente, este simulador nos ayuda a ver "dónde va el viento" y cómo interactúa con el coche. Dibujarán el perfil del coche, es decir, la silueta lateral del coche, y podrán ver cómo el aire lo rodea, buscando que el aire fluya sin problemas.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (2 minutos): Proyectar Diapositiva 16 "Visualización: Plot Speed"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">El simulador tiene muchas cosas que nos puede mostrar, pero hoy sólo usaremos dos funciones: "Plot Speed" y "Plot Curl". En "Plot Speed", vamos a ver los colores que nos indican la velocidad del aire. Queremos que el aire pase rápido y suave por todo el coche. Los colores rojos y amarillos son buenos, indican que el aire va rápido. Los azules muestran donde el aire va lento, y eso no es bueno, pero es hasta cierto grado inevitable. Queremos evitar mucho azul en la parte trasera del coche. Buscamos que lo azul se desvanezca pronto, en una forma como de flama.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (2 minutos): Proyectar Diapositiva 17 "Visualización: Plot Curl"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">En "Plot Curl", vamos a ver cómo gira el aire alrededor del coche. Queremos que el aire no haga muchos remolinos. Los mejores diseños tendrán colores verdes, y menos de los extremos como azul oscuro o rojo brillante. Si el aire gira demasiado, el coche puede perder estabilidad. Buscamos que hayan muy pocas zonas azules y rojas, y aún más importante, que no se generen remolinos en esas zonas.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (2 minutos): Proyectar Diapositiva 18 "Objetivo del Diseño Aerodinámico"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Resumiendo, queremos que el coche corte el aire de forma limpia. En "Plot Speed", buscamos colores cálidos y uniformes, que haya la menor cantidad de azul sobre la superficie del coche, y sin grandes áreas de azul detrás del coche, que se desvanezca fácilmente. En "Plot Curl", queremos evitar remolinos y colores extremos, buscando un flujo suave. Recuerden: verde es bueno, azul oscuro y rojo son zonas de turbulencia.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 8 (1 minuto): Proyectar Diapositiva 19 "Ejemplo en el Simulador"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora, veamos un ejemplo en el simulador. Este perfil tiene muchas áreas verdes y algunos remolinos controlados, pero fíjense cómo el flujo es suave. Quiero que intenten lograr algo similar con sus diseños, buscando que el aire fluya sin obstáculos.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 9 (1 minuto): Proyectar Diapositiva 20 "Instrucciones del Reto"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora es su turno. Dibujen el perfil de un coche de Fórmula 1 en el simulador. Prueben varias formas, ajusten y observen los resultados en "Plot Speed" y "Plot Curl". Recuerden, la idea es que el aire pase rápido y con pocos giros bruscos. Tienen 15 minutos para hacer sus pruebas y mejorar el diseño.</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 10 (15 minutos): Proyectar Diapositiva 21 "Diseña tu Perfil Aerodinámico"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Ahora, ¡manos a la obra! Dibujen sus diseños y ajusten según los resultados. Prueben todo lo que necesiten hasta lograr un perfil que corte el aire de manera efectiva. ¡Buena suerte, Genios!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 11 (5 minutos): Proyectar Diapositiva 22 "Evaluación de Diseños"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">¡Tiempo! Ahora veamos los resultados. Comparen sus diseños con el equipo que tengan más cerca y discutan cuáles lograron mejores resultados y por qué. Observemos juntos qué funcionó y qué puede mejorar. ¡Gran trabajo, equipo!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 12 (2 minutos): Proyectar Diapositiva 23 "Reflexionando sobre el Diseño Funcional"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Genios, ¡gran trabajo en sus diseños! Hoy no solo vimos cómo se ve un coche, sino cómo funciona. Esto es lo que hace al diseño algo tan poderoso: es mucho más que apariencia, es solucionar problemas.</div>
+        </div>
+        </div>
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">
+            <span>🏅 Actividad 5: Honor de Dojo y Despedida</span>
+            <span>⏰ Tiempo: 2.5 minutos</span>
+        </div>
+        <div class="subtitle">Cierre de la misión y recogida de materiales</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (2 minutos): Proyectar Diapositiva 24 y reproducir la animación de honor de dojo</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Limpien las notas que hayan hecho en sus magic tablets y entrégenmelas conforme vayan saliendo del salón. Recuerden que parte de ser un buen genio es mantener el espacio limpio y ordenado. ¡Gracias por ser responsables!</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar Diapositiva 25 "Hasta la Próxima, Genios"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">Genios, qué día tan interesante hemos tenido hoy. ¿Les gustó diseñar hoy? Si les gustó la clase, levanten los brazos y agiten sus manos como si estuvieran saludando. Gracias por participar y por ser tan creativos. ¡Hasta pronto, genios! 👋</div>
+        </div>
+    </div>
+</div>
